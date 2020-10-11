@@ -13,6 +13,8 @@ class Settings:
                     "cube_conv_sm": "",
                     "cube_conv_lg": "",
                     "reforge": "",
+                    "reforge_ancient_primal": "",
+                    "reforge_primal": "",
                     "open_gr": "",
                     "upgrade_gem": "",
                     "leave_game": "",

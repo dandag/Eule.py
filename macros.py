@@ -1,7 +1,7 @@
 import win32api
 import win32gui
 from time import sleep
-from sends import send_mouse, send_key, send_key_down, send_key_up, send_mouse_shift
+from sends import send_mouse, send_key, send_key_down, send_key_up, send_mouse_shift, send_mousemove
 import keyboard
 from utils import transform_coordinates
 from ressources import (
@@ -11,6 +11,8 @@ from ressources import (
     kadala_item_by_name,
 )
 from threading import Timer
+
+from screen_search import get_image, foundAncient, foundPrimal
 
 """
 # Works
@@ -184,6 +186,7 @@ def cube_conv_lg(speed):
 # Works
 def reforge():
     handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
+
     if handle:
         item = transform_coordinates(handle, 1425, 580, rel='right')
         fill = transform_coordinates(handle, 710, 840)
@@ -203,6 +206,82 @@ def reforge():
 
 
 # Works
+def reforge_ancient_primal():
+    handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
+
+    stop = False
+    nmax = 1000
+
+    if handle:
+
+        while not stop and nmax > 0:
+
+            nmax = nmax - 1
+
+            item = transform_coordinates(handle, 1425, 580, rel='right')
+            fill = transform_coordinates(handle, 710, 840)
+            trans = transform_coordinates(handle, 250, 830)
+            bw = transform_coordinates(handle, 580, 850)
+            fw = transform_coordinates(handle, 850, 850)
+
+            send_mouse(handle, 'RM', item[0], item[1])  # Item
+            sleep(0.1)
+            send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
+            send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
+            sleep(0.1)
+            send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
+            send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
+            # send_mousemove(handle, item[0], item[1])
+            send_mouse(handle, 'RM', item[0], item[1])  # Item
+
+            sleep(0.1)
+            send_mousemove(handle, item[0], item[1])
+            sleep(0.1)
+
+            screenshot = get_image(handle)
+            if foundAncient(screenshot, handle) or foundPrimal(screenshot, handle):
+                stop = True
+
+
+# Works
+def reforge_primal():
+    handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
+
+    stop = False
+    nmax = 1000
+
+    if handle:
+
+        while not stop and nmax > 0:
+
+            nmax = nmax - 1
+
+            item = transform_coordinates(handle, 1425, 580, rel='right')
+            fill = transform_coordinates(handle, 710, 840)
+            trans = transform_coordinates(handle, 250, 830)
+            bw = transform_coordinates(handle, 580, 850)
+            fw = transform_coordinates(handle, 850, 850)
+
+            send_mouse(handle, 'RM', item[0], item[1])  # Item
+            sleep(0.1)
+            send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
+            send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
+            sleep(0.1)
+            send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
+            send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
+            # send_mousemove(handle, item[0], item[1])
+            send_mouse(handle, 'RM', item[0], item[1])  # Item
+
+            sleep(0.1)
+            send_mousemove(handle, item[0], item[1])
+            sleep(0.1)
+
+            screenshot = get_image(handle)
+            if foundPrimal(screenshot, handle):
+                stop = True
+
+
+# Works
 def upgrade_gem(empowered, choose_gem):
     handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
     if handle:
@@ -215,13 +294,15 @@ def upgrade_gem(empowered, choose_gem):
         try:
             if not empowered:
                 for i in range(4):
-                    if i == 1:
+                    print("gemup " + str(i))
+                    if i == 3:
                         send_key(handle, 't')
                     send_mouse(handle, 'LM', upgrade[0], upgrade[1])
                     macro_sleep(1.8)
             else:
                 for i in range(5):
-                    if i == 2:
+                    print("gemup emp " + str(i))
+                    if i == 4:
                         send_key(handle, 't')
                     send_mouse(handle, 'LM', upgrade[0], upgrade[1])
                     macro_sleep(1.8)

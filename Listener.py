@@ -133,6 +133,10 @@ class Listener:
             )
         if hotkeys['reforge']:
             keyboard.add_hotkey(hotkeys['reforge'], macros.reforge, suppress=True)
+        if hotkeys['reforge_ancient_primal']:
+            keyboard.add_hotkey(hotkeys['reforge_ancient_primal'], macros.reforge_ancient_primal, suppress=True)
+        if hotkeys['reforge_primal']:
+            keyboard.add_hotkey(hotkeys['reforge_primal'], macros.reforge_primal, suppress=True)
         if hotkeys['skill_macro']:
             active_macro = self.settings.skill_macro['profiles'][
                 self.settings.skill_macro['active']

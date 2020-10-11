@@ -449,6 +449,33 @@ class HotkeyTab(QWidget):
 
         cube_converter_layout.addWidget(button, 3, 3, 1, 3)
 
+        # ------------------------------------
+        # reforge until ancient & primal
+        label = QLabel(cube_converter)
+        label.setText('Reforge Until Ancient or Primal')
+        cube_converter_layout.addWidget(label, 4, 0, 1, 3)
+
+        button = QPushButton(cube_converter)
+        self.buttons['reforge_ancient_primal'] = button
+        button.setText(nicer_text(self.settings.hotkeys['reforge_ancient_primal']))
+        button.clicked.connect(lambda: self.set_hotkey('reforge_ancient_primal'))
+
+        cube_converter_layout.addWidget(button, 4, 3, 1, 3)
+
+        # reforge until primal
+        label = QLabel(cube_converter)
+        label.setText('Reforge Until Primal')
+        cube_converter_layout.addWidget(label, 5, 0, 1, 3)
+
+        button = QPushButton(cube_converter)
+        self.buttons['reforge_primal'] = button
+        button.setText(nicer_text(self.settings.hotkeys['reforge_primal']))
+        button.clicked.connect(lambda: self.set_hotkey('reforge_primal'))
+
+        cube_converter_layout.addWidget(button, 5, 3, 1, 3)
+        #------------------------------------
+
+
         skill_macro = QGroupBox(self)
         skill_macro_layout = QGridLayout(skill_macro)
         skill_macro.setTitle('Skill Macro')
