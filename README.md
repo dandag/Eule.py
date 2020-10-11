@@ -132,6 +132,8 @@ The SoL Option does two converting rotations in less time than a non SoL convert
 Reforges or Converts the Item in the top left corner.\
 [Video](https://www.youtube.com/watch?v=B3Z23ZkxH4M)
 
+Added reforges until ancient or primal.\
+
 ## Image Recognition Checklist
 
 | Feature / Resolution | 1920x1080 |      2715x1527       |      3840x2160       |      2560x1440       |
@@ -141,3 +143,4 @@ Reforges or Converts the Item in the top left corner.\
 | Accept Grift         | &#10003;  | &#10003; (untested)  |                      | &#10003;  (untested) |
 | Upgrade Gem          | &#10003;  | &#10003;  (untested) | &#10003;  (untested) | &#10003;  (untested) |
 | Gamble               | &#10003;  |       &#10003;       | &#10003;  (untested) | &#10003;  (untested) |
+| Reforges to A/P      | &#10003;  |      (untested)      | (untested)           | &#10003;             |
