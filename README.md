@@ -132,7 +132,7 @@ The SoL Option does two converting rotations in less time than a non SoL convert
 Reforges or Converts the Item in the top left corner.\
 [Video](https://www.youtube.com/watch?v=B3Z23ZkxH4M)
 
-Added reforges until ancient or primal.\
+Added reforges until ancient or primal.
 
 ## Image Recognition Checklist
 
