@@ -17,7 +17,6 @@ from cv2 import (
     COLOR_BGR2GRAY,
 )
 
-
 try:
     wd = sys._MEIPASS
 except AttributeError:
@@ -160,3 +159,23 @@ def upgrade_gem(screenshot, handle):
             send_mouse(handle, 'LM', upgrade[0], upgrade[1])
             send_key(handle, 't')
             print('Found 1 Upgrades Left!')
+
+
+def foundAncient(screenshot, handle):
+    x1, y1, x2, y2 = win32gui.GetClientRect(handle)
+    img_to_find = os.path.join(wd, f'./images/{x2 - x1}_{y2 - y1}/ancient.png')
+    if image_search(img_to_find, screenshot, precision=0.8):
+        print('FOUND ancient!')
+        return True
+    else:
+        return False
+
+
+def foundPrimal(screenshot, handle):
+    x1, y1, x2, y2 = win32gui.GetClientRect(handle)
+    img_to_find = os.path.join(wd, f'./images/{x2 - x1}_{y2 - y1}/primal.png')
+    if image_search(img_to_find, screenshot, precision=0.8):
+        print('FOUND primal!')
+        return True
+    else:
+        return False
