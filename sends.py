@@ -2,7 +2,6 @@ import win32api
 import win32con
 from ressources import key_to_hex
 
-
 def send_key(handle, key):
     win32api.PostMessage(handle, win32con.WM_KEYDOWN, key_to_hex(key), 0)
     win32api.PostMessage(handle, win32con.WM_KEYUP, key_to_hex(key), 0)
@@ -40,6 +39,8 @@ def send_key_down(handle, key):
 def send_key_up(handle, key):
     win32api.PostMessage(handle, win32con.WM_KEYUP, key_to_hex(key), 0)
 
+def interrupt_key():
+    return win32api.GetAsyncKeyState(win32con.VK_ESCAPE)
 
 # Sends text to a Window
 def send_message(handle, message):

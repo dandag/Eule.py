@@ -1,7 +1,7 @@
 import win32api
 import win32gui
 from time import sleep
-from sends import send_mouse, send_key, send_key_down, send_key_up, send_mouse_shift, send_mousemove
+from sends import send_mouse, send_key, send_key_down, send_key_up, send_mouse_shift, send_mousemove, interrupt_key
 import keyboard
 from utils import transform_coordinates
 from ressources import (
@@ -105,14 +105,15 @@ def cube_conv_sm(speed):
                         send_mouse(
                             handle, 'RM', item[0] + j * step[0], item[1] + i * step[1]
                         )
-                        macro_sleep(0.13)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
-                        macro_sleep(0.1)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
-                        macro_sleep(0.13)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
-                        macro_sleep(0.1)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', fw[0], fw[1])  # Forwards
+                        macro_sleep(0.2)
         except StopMacro:
             pass
 
@@ -171,14 +172,15 @@ def cube_conv_lg(speed):
                             item[0] + j * step[0],
                             item[1] + i * step[1] * 2,
                         )
-                        macro_sleep(0.13)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
-                        macro_sleep(0.1)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
-                        macro_sleep(0.13)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
-                        macro_sleep(0.1)
+                        macro_sleep(0.2)
                         send_mouse(handle, 'LM', fw[0], fw[1])  # Forwards
+                        macro_sleep(0.2)
         except StopMacro:
             pass
 
@@ -212,35 +214,42 @@ def reforge_ancient_primal():
     stop = False
     nmax = 1000
 
-    if handle:
+    try:
+        if handle:
+            while not stop and nmax > 0:
 
-        while not stop and nmax > 0:
+                if interrupt_key():
+                    break
 
-            nmax = nmax - 1
+                nmax = nmax - 1
 
-            item = transform_coordinates(handle, 1425, 580, rel='right')
-            fill = transform_coordinates(handle, 710, 840)
-            trans = transform_coordinates(handle, 250, 830)
-            bw = transform_coordinates(handle, 580, 850)
-            fw = transform_coordinates(handle, 850, 850)
+                item = transform_coordinates(handle, 1425, 580, rel='right')
+                fill = transform_coordinates(handle, 710, 840)
+                trans = transform_coordinates(handle, 250, 830)
+                bw = transform_coordinates(handle, 580, 850)
+                fw = transform_coordinates(handle, 850, 850)
 
-            send_mouse(handle, 'RM', item[0], item[1])  # Item
-            sleep(0.1)
-            send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
-            send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
-            sleep(0.1)
-            send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
-            send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
-            # send_mousemove(handle, item[0], item[1])
-            send_mouse(handle, 'RM', item[0], item[1])  # Item
+                send_mouse(handle, 'RM', item[0], item[1])  # Item
+                sleep(0.2)
+                send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
+                sleep(0.2)
+                send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
+                sleep(0.2)
+                send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
+                sleep(0.2)
+                send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
+                sleep(0.2)
+                send_mouse(handle, 'RM', item[0], item[1])  # Item
+                sleep(0.2)
+                send_mousemove(handle, item[0], item[1])  # Hover
+                sleep(0.1)
 
-            sleep(0.1)
-            send_mousemove(handle, item[0], item[1])
-            sleep(0.1)
-
-            screenshot = get_image(handle)
-            if foundAncient(screenshot, handle) or foundPrimal(screenshot, handle):
-                stop = True
+                # screenshot
+                screenshot = get_image(handle)
+                if foundAncient(screenshot, handle) or foundPrimal(screenshot, handle):
+                    stop = True
+    except StopMacro:
+        pass
 
 
 # Works
@@ -250,35 +259,42 @@ def reforge_primal():
     stop = False
     nmax = 1000
 
-    if handle:
+    try:
+        if handle:
+            while not stop and nmax > 0:
 
-        while not stop and nmax > 0:
+                if interrupt_key():
+                    break
 
-            nmax = nmax - 1
+                nmax = nmax - 1
 
-            item = transform_coordinates(handle, 1425, 580, rel='right')
-            fill = transform_coordinates(handle, 710, 840)
-            trans = transform_coordinates(handle, 250, 830)
-            bw = transform_coordinates(handle, 580, 850)
-            fw = transform_coordinates(handle, 850, 850)
+                item = transform_coordinates(handle, 1425, 580, rel='right')
+                fill = transform_coordinates(handle, 710, 840)
+                trans = transform_coordinates(handle, 250, 830)
+                bw = transform_coordinates(handle, 580, 850)
+                fw = transform_coordinates(handle, 850, 850)
 
-            send_mouse(handle, 'RM', item[0], item[1])  # Item
-            sleep(0.1)
-            send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
-            send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
-            sleep(0.1)
-            send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
-            send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
-            # send_mousemove(handle, item[0], item[1])
-            send_mouse(handle, 'RM', item[0], item[1])  # Item
+                send_mouse(handle, 'RM', item[0], item[1])  # Item
+                sleep(0.2)
+                send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
+                sleep(0.2)
+                send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
+                sleep(0.2)
+                send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
+                sleep(0.2)
+                send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
+                sleep(0.2)
+                send_mouse(handle, 'RM', item[0], item[1])  # Item
+                sleep(0.2)
+                send_mousemove(handle, item[0], item[1])  # Hover
+                sleep(0.1)
 
-            sleep(0.1)
-            send_mousemove(handle, item[0], item[1])
-            sleep(0.1)
-
-            screenshot = get_image(handle)
-            if foundPrimal(screenshot, handle):
-                stop = True
+                # screenshot
+                screenshot = get_image(handle)
+                if foundPrimal(screenshot, handle):
+                    stop = True
+    except StopMacro:
+        pass
 
 
 # Works
