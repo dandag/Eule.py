@@ -3,7 +3,7 @@ import win32gui
 from time import sleep
 from sends import send_mouse, send_key, send_key_down, send_key_up, send_mouse_shift, send_mousemove, interrupt_key
 import keyboard
-from utils import transform_coordinates
+from utils import transform_coordinates, sleepSpeedConv
 from ressources import (
     map_act_coords_by_act,
     map_town_coords_by_act,
@@ -208,7 +208,7 @@ def reforge():
 
 
 # Works
-def reforge_ancient_primal():
+def reforge_ancient_primal(speed):
     handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
 
     stop = False
@@ -230,17 +230,17 @@ def reforge_ancient_primal():
                 fw = transform_coordinates(handle, 850, 850)
 
                 send_mouse(handle, 'RM', item[0], item[1])  # Item
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'RM', item[0], item[1])  # Item
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mousemove(handle, item[0], item[1])  # Hover
                 sleep(0.1)
 
@@ -253,7 +253,7 @@ def reforge_ancient_primal():
 
 
 # Works
-def reforge_primal():
+def reforge_primal(speed):
     handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
 
     stop = False
@@ -275,17 +275,17 @@ def reforge_primal():
                 fw = transform_coordinates(handle, 850, 850)
 
                 send_mouse(handle, 'RM', item[0], item[1])  # Item
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', fill[0], fill[1])  # Fill
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', trans[0], trans[1])  # Transmute
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', bw[0], bw[1])  # Backwards
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'LM', fw[0], fw[1])  # Forth
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mouse(handle, 'RM', item[0], item[1])  # Item
-                sleep(0.2)
+                sleepSpeedConv(speed)
                 send_mousemove(handle, item[0], item[1])  # Hover
                 sleep(0.1)
 

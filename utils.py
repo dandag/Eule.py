@@ -95,6 +95,7 @@ def transform_coordinates(handle, x, y, rel='left'):
         new_x = int(x * h / 1080 + (w - 1920 * h / 1080) / 2)
     new_y = int((h / 1080) * y)
 
+    # print( "(" + str(new_x) + " , " + str(new_y) + ")" )
     return (new_x, new_y)
 
 
@@ -143,3 +144,11 @@ def nicer_text(hotkey):
         73: 'Num9',
     }
     return switcher.get(hotkey, hotkey)
+
+def sleepSpeedConv(speed):
+    if speed == 'normal':
+        sleep(0.13)
+    elif speed == 'sol':
+        sleep(0.06)
+    elif speed == 'slow':
+        sleep(0.2)

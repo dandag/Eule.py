@@ -149,7 +149,7 @@ def upgrade_gem(screenshot, handle):
             print('Found 4 Upgrades Left!')
         elif image_search(images_to_find[2], upgrade_img, precision=0.95):
             send_mouse(handle, 'LM', upgrade[0], upgrade[1])
-            send_key(handle, 't')
+            #send_key(handle, 't')
             print('Found 3 Upgrades Left!')
         elif image_search(images_to_find[1], upgrade_img, precision=0.95):
             send_mouse(handle, 'LM', upgrade[0], upgrade[1])
