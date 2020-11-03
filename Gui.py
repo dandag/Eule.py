@@ -293,6 +293,16 @@ class HotkeyTab(QWidget):
         button.clicked.connect(lambda: self.set_hotkey('port_pool'))
         porting_layout.addWidget(button, 5, 1)
 
+        label = QLabel(porting)
+        label.setText('Port to A2 Temple')
+        porting_layout.addWidget(label, 6, 0)
+
+        button = QPushButton(porting)
+        self.buttons['tpa2temple'] = button
+        button.setText(nicer_text(self.settings.hotkeys['tpa2temple']))
+        button.clicked.connect(lambda: self.set_hotkey('tpa2temple'))
+        porting_layout.addWidget(button, 6, 1)
+
         greater_rift = QGroupBox(self)
         greater_rift_layout = QGridLayout(greater_rift)
         greater_rift.setTitle('Greater Rift')

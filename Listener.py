@@ -137,6 +137,8 @@ class Listener:
             keyboard.add_hotkey(hotkeys['reforge_ancient_primal'], macros.reforge_ancient_primal, args=(special['cube_conv_speed'],), suppress=False)
         if hotkeys['reforge_primal']:
             keyboard.add_hotkey(hotkeys['reforge_primal'], macros.reforge_primal, args=(special['cube_conv_speed'],), suppress=False)
+        if hotkeys['tpa2temple']:
+            keyboard.add_hotkey(hotkeys['tpa2temple'], macros.tpA2Temple, suppress=False)
         if hotkeys['skill_macro']:
             active_macro = self.settings.skill_macro['profiles'][
                 self.settings.skill_macro['active']

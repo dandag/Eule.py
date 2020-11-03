@@ -15,6 +15,7 @@ class Settings:
                     "reforge": "",
                     "reforge_ancient_primal": "",
                     "reforge_primal": "",
+                    "tpa2temple": "",
                     "open_gr": "",
                     "upgrade_gem": "",
                     "leave_game": "",

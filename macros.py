@@ -477,6 +477,24 @@ def gamble(item):
         for i in range(60):
             send_mouse(handle, 'RM', item[0], item[1])
 
+def tpA2Temple():
+    handle = win32gui.FindWindow('D3 Main Window Class', 'Diablo III')
+    if handle:
+        # open map
+        send_key(handle, 'm')
+        sleep(0.2)
+        # reduce map
+        map = transform_coordinates(handle, 895, 130)
+        send_mouse(handle, 'LM', map[0], map[1])
+        sleep(0.2)
+        # select A2
+        map = transform_coordinates(handle, 1090, 520)
+        send_mouse(handle, 'LM', map[0], map[1])
+        sleep(0.2)
+        # select temple bounty
+        map = transform_coordinates(handle, 1430, 380)
+        send_mouse(handle, 'LM', map[0], map[1])
+
 
 # cant pause this via the regular pause hotkey for now
 is_running = False
