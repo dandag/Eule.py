@@ -4,10 +4,6 @@ A Diablo III Macro Collection.\
 The Macros work on all Resolutions.\
 Supported _Auto Stuff_ Resolutions can be found on the bottom.
 
-There are two different Versions
-* Eule.py works with Image Recognition.
-* Eule.py__noIR doesnt support Image Recognition.
-
 ## Macros
 
 All Macros are sent directly to Diablo III without using your physical mouse or keyboard.\
@@ -89,6 +85,9 @@ Ports to the Town of Act x.
 Ports to the next Poolspot from the Poolspots List (Settings).\
 [Video](https://www.youtube.com/watch?v=KfkVtLCQiNo)
 
+#### Port to A2 Tample
+Ports to Act 2 temple of the firstborn location
+
 #### Open Grift
 
 Opens a Greater Rift from when you have clicked the Obelisk.\
@@ -132,7 +131,10 @@ The SoL Option does two converting rotations in less time than a non SoL convert
 Reforges or Converts the Item in the top left corner.\
 [Video](https://www.youtube.com/watch?v=B3Z23ZkxH4M)
 
-Added reforges until ancient or primal.
+#### Reforge until ancient or primal
+
+Reforges (max 1000 times) until ancient or primal.
+Leave mouse above item to reforge, press del to manual stop  
 
 ## Image Recognition Checklist
 
